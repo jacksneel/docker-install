@@ -1,0 +1,19 @@
+---
+ - hosts: prod
+   tasks:
+           - name: install nfs in both server
+             yum: 
+                     name: nfs-utils
+                     state: present
+
+           - name: start nfs service
+             service:
+                     name: nfs-server
+                     state: started
+
+           - name: add service in firewall
+             firewalld:
+                     port: 111/tcp
+                     permanent: yes
+                     state: enabled
+                     immediate: yes          
