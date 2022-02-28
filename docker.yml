@@ -38,7 +38,7 @@
              become: yes
 
            - name: Install Docker
-             package:
+             yum:
                     name: docker
                     state: present
 
